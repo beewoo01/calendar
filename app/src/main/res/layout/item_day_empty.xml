@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="EmptyDayBinding">
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="cookmap.cookandroid.hw.myapplication.EmptyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintDimensionRatio="2:3"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                setDayText="@{model.setEmptyText}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="#63B900"
+                android:textSize="30sp"
+                tools:text="6" />
+        </RelativeLayout>
+
+        <!--<View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="2:3"
+            tools:ignore="MissingConstraints"/>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
