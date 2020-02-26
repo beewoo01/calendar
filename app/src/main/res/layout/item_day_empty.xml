@@ -23,14 +23,26 @@
             app:layout_constraintDimensionRatio="2:3"
             tools:ignore="MissingConstraints">
 
-            <TextView
+            <!--<TextView
                 setDayText="@{model.setEmptyText}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textColor="#63B900"
                 android:textSize="30sp"
-                tools:text="6" />
+                tools:text="6" />-->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"
+                android:layout_alignParentRight="true"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGray"
+                android:layout_alignParentBottom="true"
+                />
         </RelativeLayout>
 
         <!--<View

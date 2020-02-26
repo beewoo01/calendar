@@ -1,8 +1,13 @@
 package cookmap.cookandroid.hw.myapplication;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -22,10 +27,12 @@ public class CalendarAdapter extends RecyclerView.Adapter {
     private final int DAY_TYPE = 2;
 
     private List<Object> mCalendarList;
+    private SparseBooleanArray mSelectedItems = new SparseBooleanArray(0);
 
     public CalendarAdapter(List<Object> calendarList) {
         mCalendarList = calendarList;
     }
+
 
     public void setCalendarList(List<Object> calendarList) {
         mCalendarList = calendarList;
@@ -63,7 +70,26 @@ public class CalendarAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int position) {
+
+        viewHolder.itemView.setSelected(isItemSelected(position));
+
+        /*viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("onClick", String.valueOf(position));
+                if (mSelectedItems.get(position,false))
+                {
+                    mSelectedItems.put(position,false);
+                    v.setBackgroundColor(Color.WHITE);
+                }
+                else{
+                    mSelectedItems.put(position,true);
+                    v.setBackgroundColor(Color.BLUE);
+                }
+            }
+        });*/
+
         int viewType = getItemViewType(position);
         if (viewType == EMPTY_TYPE) {
             EmptyViewHolder holder = (EmptyViewHolder) viewHolder;
@@ -84,6 +110,10 @@ public class CalendarAdapter extends RecyclerView.Adapter {
             holder.setViewModel(model);
         }
 
+    }
+
+    private boolean isItemSelected(int position){
+     return mSelectedItems.get(position, false);
     }
 
     @Override
